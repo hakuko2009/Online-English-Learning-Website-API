@@ -1,0 +1,10 @@
+﻿{
+    "database": {
+        "host": "127.0.0.1",
+        "port": 3000,
+        "user": "root",
+        "password": "Tvxqmyproudlove1332000!",
+        "database": "demo_api"
+    },
+    "secret": "THIS IS USED TO SIGN AND VERIFY JWT TOKENS, IT CAN BE ANY STRING"
+}
