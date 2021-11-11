@@ -132,10 +132,22 @@ module.exports = {
         })
     },
     update: (req, res) => {
-        let data = req.body;
+        let obj = req.body
+    
+        let data = `gv_password = '${obj.gv_password}', ` 
+                + `tengv = '${obj.tengv}', `
+                + `idnumber = '${obj.idnumber}', `
+                + `gioitinh = '${obj.gioitinh}', `
+                + `ngaysinh = '${obj.ngaysinh}', `
+                + `email = '${obj.email}', `
+                + `sdt = '${obj.sdt}', `
+                + `diachi = '${obj.diachi}', `
+                + `dvct = '${obj.dvct}', `
+                + `avatar = '${obj.avatar}'`
+
         let gv_username = req.params.gv_username;
-        let sql = 'UPDATE giaovien SET ? WHERE gv_username = ?'
-        db.query(sql, [data, gv_username], (err, response) => {
+        let sql = 'UPDATE giaovien SET ' + data + ' WHERE gv_username = ?'
+        db.query(sql, gv_username, (err, response) => {
             if (err) throw err
             res.json({message: 'Cập nhật thông tin giáo viên thành công!'})
         })

@@ -136,10 +136,20 @@ module.exports = {
         })
     },
     update(req, res){
-        let data = req.body;
+        let obj = req.body
+    
+        let data = `hv_password = '${obj.hv_password}', ` 
+                + `tenhv = '${obj.tenhv}', `
+                + `ngaysinh = '${obj.ngaysinh}', `
+                + `gioitinh = '${obj.gioitinh}', `
+                + `email = '${obj.email}', `
+                + `sdt = '${obj.sdt}', `
+                + `diachi = '${obj.diachi}', `
+                + `avatar = '${obj.avatar}'`
+       
         let hv_username = req.params.hv_username;
-        let sql = 'UPDATE hocvien SET ? WHERE hv_username = ?'
-        db.query(sql, [data, hv_username], (err, response) => {
+        let sql = 'UPDATE hocvien SET ' + data + ' WHERE hv_username = ?'
+        db.query(sql, hv_username, (err, response) => {
             if (err) throw err
             res.json({message: 'Cập nhật thông tin học viên thành công!'})
         })

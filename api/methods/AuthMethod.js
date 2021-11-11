@@ -17,7 +17,7 @@ exports.generateToken = async (payload, secretSignature, tokenLife) => {
 			},
 		);
 	} catch (error) {
-		console.log('Có lỗi xảy ra khi khởi tạo token:  + ${error}');
+		console.log(`Có lỗi xảy ra khi khởi tạo token:  + ${error}`);
 		return null;
 	}
 };
@@ -26,7 +26,7 @@ exports.verifyToken = async (token, secretKey) => {
 	try {
 		return await verify(token, secretKey);
 	} catch (error) {
-		console.log('Có lỗi xảy ra khi khởi tạo token: + ${error}');
+		console.log(`Có lỗi xảy ra khi khởi tạo token: + ${error}`);
 		return null;
 	}
 };
@@ -37,7 +37,7 @@ exports.decodeToken = async (token, secretKey) => {
 			ignoreExpiration: true,
 		});
 	} catch (error) {
-		console.log('Có lỗi xảy ra khi khởi tạo token: ${error}');
+		console.log(`Có lỗi xảy ra khi khởi tạo token: ${error}`);
 		return null;
 	}
 };

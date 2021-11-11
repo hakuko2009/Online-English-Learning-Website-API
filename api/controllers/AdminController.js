@@ -123,11 +123,18 @@ module.exports = {
             res.json(response[0])
         })
     },
+    
     update: (req, res) => {
-        let data = req.body;
+        let obj = req.body
+
+        let data = `admin_password = '${obj.admin_password}', `
+                + `email = '${obj.email}', `
+                + `sdt = '${obj.sdt}'`
+
         let admin_username = req.params.admin_username;
-        let sql = 'UPDATE ADMIN SET ? WHERE admin_username = ?'
-        db.query(sql, [data, admin_username], (err, response) => {
+        let sql = 'UPDATE ADMIN SET ' + data + ' WHERE admin_username = ?'
+        db.query(sql, admin_username, (err, response) => {
+            
             if (err) throw err
             res.json({message: 'Cập nhật thông tin thành công!'})
         })
