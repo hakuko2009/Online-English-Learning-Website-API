@@ -14,6 +14,13 @@ module.exports = function(app){
     //     .put(productsCtrl.update) 
     //     .delete(productsCtrl.delete); 
 
+    // admin
+    let adminControl = require('./controllers/AdminController');
+    app.route('/admin/login').post(adminControl.login)
+    app.route('/admin/refresh').post(adminControl.refreshToken)
+    app.route('/admin/information/:admin_username').get(adminControl.detail)
+    app.route('/admin/updateInformation/:admin_username').post(adminControl.update)
+
     // hoc vien
     let hocvienControl = require('./controllers/HocVienController');
     app.route('/hocvien/login').post(hocvienControl.login)
