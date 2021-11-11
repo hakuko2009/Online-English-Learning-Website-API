@@ -167,5 +167,12 @@ module.exports = {
             if (err) throw err
             res.json({message: 'Xóa giáo viên thành công!'})
         })
-    }
+    },
+    getAllLessions: (req, res) => {
+        let sql = 'SELECT * FROM baihoc WHERE gv_username = ?'
+        db.query(sql, [req.params.gv_username], (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
 }

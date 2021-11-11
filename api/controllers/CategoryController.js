@@ -21,11 +21,19 @@ module.exports = {
     },
     update: (req, res) => {
         let data = req.body;
-        let madanhmuc = req.params.madanhmuc;
         let sql = 'UPDATE danhmucbaihoc SET ? WHERE madanhmuc = ?'
-        db.query(sql, [data, madanhmuc], (err, response) => {
+        db.query(sql, [data, req.params.madanhmuc], (err, response) => {
             if (err) throw err
             res.json({message: 'Cập nhật danh mục bài học thành công!'})
         })
     },
+    getAllLessions: (req, res) => {
+        let sql = 'SELECT * FROM baihoc WHERE madanhmuc = ?'
+        db.query(sql, [req.params.madanhmuc], (err, response) => {
+            if (err) throw err
+            res.json(response)
+        })
+    },
+    
+    // hien thi bai hoc cua moi danh muc, cua moi giao vien
 }

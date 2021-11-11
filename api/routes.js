@@ -45,6 +45,8 @@ module.exports = function(app){
             .get(giaovienControl.detail) 
             .put(giaovienControl.update) 
             .delete(giaovienControl.delete);
+    app.route('/giaovien/tatcabaihoc/:gv_username')
+            .get(giaovienControl.getAllLessions)
 
     // bai hoc
     let lessonControl = require('./controllers/LessonsController');
@@ -61,6 +63,8 @@ module.exports = function(app){
     app.route('/danhmucbaihoc/:madanhmuc')
             .get(categControl.detail)
             .put(categControl.update)
+    app.route('/danhmucbaihoc/tatcabaihoc/:madanhmuc')
+            .get(categControl.getAllLessions)
 
 
 
