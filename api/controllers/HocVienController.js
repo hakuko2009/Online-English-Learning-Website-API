@@ -151,7 +151,7 @@ module.exports = {
         let sql = 'UPDATE hocvien SET ' + data + ' WHERE hv_username = ?'
         db.query(sql, hv_username, (err, response) => {
             if (err) throw err
-            res.json({message: 'Cập nhật thông tin học viên thành công!'})
+            res.json({message: 'Cập nhật thông tin thành công!'})
         })
     },
     store(req, res){

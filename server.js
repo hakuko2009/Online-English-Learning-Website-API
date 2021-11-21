@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const http = require('http')
 const bodyParser = require('body-parser')
 const port = process.env.PORT || 3000
 
@@ -16,7 +17,8 @@ app.use(function(req, res) {
         url: req.originalUrl + ' not found'
     })
 })
+var httpServer = http.createServer(app);
 
-app.listen(port)
+httpServer.listen(port)
 
 console.log('RESTful API server started on: ' + port)
